@@ -22,6 +22,10 @@ El archivo `wordlist.txt` continee una palabra por línea. Mostrar en pantalla t
 
 - La búsqueda de anagramas debe hacerse case insensitive.
 - Descargar el archivo preferiblemente en UTF-8
+- No exceder los 30 minutos codeando de seguido. Después de ese tiempo, el copiloto y piloto cambian de puestos, toman 5 minutos de descanso y continuan luego.
+- Tiene que verse la fecha y hora de la computadora.
+- Usar un Git branch único.
+- Después de cada rotación se debe hacer commit y push.
 
 ## Groups
 
@@ -36,9 +40,9 @@ El archivo `wordlist.txt` continee una palabra por línea. Mostrar en pantalla t
 
 **TDD (main logic)**:
 
-- Mikhael Santos, Angie Peña
-- Frank Chavez, Kemberly Nahely
+- Angie Peña, Mikhael Santos
+- Alexis Novas, Kemberly Nahely
 
 **Aplicación de consola**:
 
-- Alexis Novas, César López
+- Frank Chavez, César López
