@@ -14,9 +14,9 @@ namespace Anagram.Tests
 
     [Theory]    
     [MemberData(nameof(DataForGroupWordsByCharacteresQuantityTest))]     
-    public void GroupWordsByCharactersQuantityTest(List<string> words, List<List<string>> expectedResult)
+    public void GroupWordsByCharactersQuantityTest(List<string> words, Dictionary <int, List<string>> expectedResult)
     {
-      List<List<string>> grouped = _anagram.GroupWordsByCharactersQuantity(words);
+      Dictionary<int, List<string>> grouped = _anagram.GroupWordsByCharactersQuantity(words);
       Assert.Equal(expectedResult, grouped);
     }
 
@@ -26,23 +26,30 @@ namespace Anagram.Tests
         new object[] 
         { 
           new List<string>() { "hello", "hlole", "lleho", "ax", "xa", "a", "b" },
-          new List<List<string>>
+          new Dictionary <int, List<string>>()
           {
-            new List<string>() { "hello", "hlole", "lleho" },
-            new List<string>() { "ax", "xa" }
+            { 5, new List<string>() { "hello", "hlole", "lleho" }},
+            { 2, new List<string>() { "ax", "xa" }}
           }
         },
 
         new object[]
         {
           new List<string>() { "dedo", "odito", "odot", "oded", "jjjjjjj", "kkkkkkk"},
-          new List<List<string>>()
+          new Dictionary <int, List<string>>()
           {
-              new List<string>() { "dedo", "odot", "oded" },
-              new List<string>() { "odito" },
-              new List<string>() { "jjjjjjj", "kkkkkkk"}
+              { 4, new List<string>() { "dedo", "odot", "oded" }},
+              { 5, new List<string>() { "odito" }},
+              { 7, new List<string>() { "jjjjjjj", "kkkkkkk" }}
           }
         }
       };
+
+      /* new List<List<string>>
+          {
+            new List<string>() { "hello", "hlole", "lleho" },
+            new List<string>() { "ax", "xa" }
+          }
+          */
   }
 }
