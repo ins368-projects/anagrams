@@ -4,11 +4,11 @@ using Anagram;
 
 namespace Anagram.Tests
 {
-  public class TestAnagram
+  public class SortHelperTests
   {
     private readonly StringHelper _stringHelper;
 
-    public TestAnagram() => _stringHelper = new StringHelper();
+    public SortHelperTests() => _stringHelper = new StringHelper();
 
     [Theory]    
     [InlineData("HELLO", "hello")]    
