@@ -6,16 +6,12 @@ namespace Anagram.Tests
 {
   public class SortHelperTests
   {
-    private readonly StringHelper _stringHelper;
-
-    public SortHelperTests() => _stringHelper = new StringHelper();
-
     [Theory]    
     [InlineData("HELLO", "hello")]    
     [InlineData("OLITA", "olita")]    
     public void IsUpperCase_InputIsAnyWord_ReturnWordToLowerCase(string word, string expected)
     {
-      string lowerCaseWord = _stringHelper.ToLower(word);
+      string lowerCaseWord = StringHelper.ToLowerCase(word);
       Assert.Equal(expected, lowerCaseWord);
     }
     
@@ -25,7 +21,7 @@ namespace Anagram.Tests
     [InlineData(" ghe ","ghe")]    
     public void Remove_Whitespace(string word, string expected)
     {
-      string withoutWhitespace = _stringHelper.Trim(word);
+      string withoutWhitespace = StringHelper.Trim(word);
       Assert.Equal(withoutWhitespace,expected);
     }
   
@@ -36,7 +32,7 @@ namespace Anagram.Tests
     [InlineData("ab'c", "'abc")]
     public void OrderAlphabetically_AnyString(string word, string expected)
     {
-      string sorted = _stringHelper.SortAlphabetically(word);
+      string sorted = StringHelper.SortAlphabetically(word);
       Assert.Equal(expected, sorted);
     }
   }

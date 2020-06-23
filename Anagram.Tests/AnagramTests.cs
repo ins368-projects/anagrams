@@ -44,12 +44,5 @@ namespace Anagram.Tests
           }
         }
       };
-
-      /* new List<List<string>>
-          {
-            new List<string>() { "hello", "hlole", "lleho" },
-            new List<string>() { "ax", "xa" }
-          }
-          */
   }
 }
