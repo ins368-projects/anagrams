@@ -5,19 +5,10 @@ namespace Anagram
 {
   public class StringHelper
   {
-    public string ToLower(string word)
-    {
-      return word.ToLower();
-    }
+    public static string ToLowerCase(string word) => word.ToLower();
 
-    public string Trim(string word)
-    {
-      return word.Trim();
-    }
+    public static string Trim(string word) => word.Trim();
 
-		public string SortAlphabetically(string word)
-		{
-			return String.Concat(word.OrderBy(c => c));
-		}
+		public static string SortAlphabetically(string word) => String.Concat(word.OrderBy(c => c));
   }
 }

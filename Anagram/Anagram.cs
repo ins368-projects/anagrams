@@ -4,13 +4,27 @@ namespace Anagram
 {
   public class Anagram
   {
-    public List<List<string>> GroupWordsByCharactersQuantity(List<string> words)
+    public Dictionary<int, List<string>> GroupWordsByCharactersQuantity(List<string> words)
     {
-      return new List<List<string>>()
+      var groups = new Dictionary<int, List<string>>();
+
+      foreach(string word in words)
       {
-        new List<string>() { "hello", "hlole", "lleho" },
-        new List<string>() { "ab", "ba" }
-      };
+        if(word.Length == 1)
+          continue;
+        
+        var lowerCaseWord = StringHelper.ToLowerCase(word);
+
+        int quantity = word.Length;
+        
+        if(groups.ContainsKey(quantity))
+          groups[quantity].Add(lowerCaseWord);
+        else 
+          groups.Add(quantity, new List<string>() { lowerCaseWord});
+      }
+
+      return groups; 
+      
     }
   }
 }
