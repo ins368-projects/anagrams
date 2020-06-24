@@ -13,39 +13,6 @@ namespace Anagram.Tests
 
     public AnagramTests() => _anagram = new Anagram();
 
-    [Theory]    
-    [MemberData(nameof(DataForGroupWordsByCharacteresQuantityTest))]     
-    public void GroupWordsByCharactersQuantityTest(List<string> words, Dictionary <int, List<string>> expectedResult)
-    {
-      Dictionary<int, List<string>> grouped = _anagram.GroupWordsByCharactersQuantity(words);
-      Assert.Equal(expectedResult, grouped);
-    }
-
-    public static IEnumerable<object[]> DataForGroupWordsByCharacteresQuantityTest =>
-      new List<object[]> 
-      {
-        new object[] 
-        { 
-          new List<string>() { "hello", "hlole", "lleho", "ax", "xa", "a", "b" },
-          new Dictionary <int, List<string>>()
-          {
-            { 5, new List<string>() { "hello", "hlole", "lleho" }},
-            { 2, new List<string>() { "ax", "xa" }}
-          }
-        },
-
-        new object[]
-        {
-          new List<string>() { "dedo", "odito", "odot", "oded", "jjjjjjj", "kkkkkkk"},
-          new Dictionary <int, List<string>>()
-          {
-              { 4, new List<string>() { "dedo", "odot", "oded" }},
-              { 5, new List<string>() { "odito" }},
-              { 7, new List<string>() { "jjjjjjj", "kkkkkkk" }}
-          }
-        }
-      };
-
       [Fact]
       public void ComputeAnagrams_GetList_ReturnDictionary()
       {
@@ -56,31 +23,99 @@ namespace Anagram.Tests
       [Fact]
       public void ComputeAnagrams_KeySavesWordSortedAlphabetically_ReturnDictionaryWithAlphabeticallySortedKey()
       {
-            var words = new List<string>(){"hello"};
-            Dictionary<string, List<string>> group = _anagram.ComputeAnagrams(words);
-            Dictionary<string, List<string>> expected = new Dictionary<string, List<string>> {"ehllo", words};
+           var words = new List<string>(){"hello"};
+           Dictionary<string, List<string>> group = _anagram.ComputeAnagrams(words);
+           Dictionary<string, List<string>> expected = new Dictionary<string, List<string>>(){{"ehllo", words}};
             
-            Assert.Equal(group, expected);
+           Assert.Equal(group, expected);
+      }
+
+      [Fact]
+      public void ComputeAnagrams_TwoPossibleAnagramsInput_ReturnTwoAnagrams()
+      {
+           var words = new List<string>(){"hello", "ehllo", "bc", "cb"};
+           Dictionary<string, List<string>> group = _anagram.ComputeAnagrams(words);
+           Dictionary<string, List<string>> expected = new Dictionary<string, List<string>>() 
+           {{"ehllo", new List<string>() {"hello", "ehllo"}}, {"bc", new List<string>() {"bc", "cb"}}};
+            
+           Assert.Equal(group, expected);
             
       }
 
-      //[Fact]
-      //public void ComputeAnagrams_TwoPossibleAnagramsInput_ReturnTwoAnagrams()
-      //{
-           // var words = new List<string>(){"hello", "ehllo", "bc", "cb"};
-           // Dictionary<string, List<string>> group = _anagram.ComputeAnagrams(words);
-           // Dictionary<string, List<string>> expected = new Dictionary<string, List<string>> 
-           // {"ehllo", new List<string>() {"hello", "ehllo"}, {"bc", new List<string>() {"bc", "cb"}}};
+      [Fact]
+      public void ComputeAnagrams_TwoPossibleAnagramsWithUpperCaseLetters_ReturnTwoAnagramsInLowerCase()
+      {
+           var words = new List<string>(){"Hello", "ehLlo", "Bc", "cB"};
+           Dictionary<string, List<string>> group = _anagram.ComputeAnagrams(words);
+           Dictionary<string, List<string>> expected = new Dictionary<string, List<string>>() {{"ehllo", new List<string>() {"hello", "ehllo"}}, {"bc", new List<string>() {"bc", "cb"}}};
             
-            //Assert.Equal(group, expected);
+           Assert.Equal(group, expected);
             
-      //}
-       
+      }
 
+     [Fact]
+      public void ComputeAnagrams_TwoPossibleAnagramsWithSpace_ReturnTwoAnagramsWithoutSpace()
+      {
+           var words = new List<string>(){"Hello ", "ehLlo", "Bc", " cB"};
+           Dictionary<string, List<string>> group = _anagram.ComputeAnagrams(words);
+           Dictionary<string, List<string>> expected = new Dictionary<string, List<string>>() 
+           {{"ehllo", new List<string>() {"hello", "ehllo"}}, {"bc", new List<string>() {"bc", "cb"}}};
+            
+           Assert.Equal(group, expected);
+      }
 
+     [Fact]
+      public void ComputeAnagrams_NoPossibleAnagrams_ReturnDictionaryListLenghtOne()
+      {
+           var words = new List<string>(){"HEllo", "bc"};
+           Dictionary<string, List<string>> group = _anagram.ComputeAnagrams(words);
+           Dictionary<string, List<string>> expected = new Dictionary<string, List<string>>() 
+           {{"ehllo", new List<string>() {"hello"}}, {"bc", new List<string>() {"bc"}}};
 
- 
+           Assert.Equal(group, expected);
+      }
 
-  
+      [Fact]
+      public void ComputeAnagrams_3WordsWithSameLeght_ReturnAnagram()
+      {
+           var words = new List<string>(){"HEllo", "elloh", "pleas"};
+           Dictionary<string, List<string>> group = _anagram.ComputeAnagrams(words);
+           Dictionary<string, List<string>> expected = new Dictionary<string, List<string>>() 
+           {{"ehllo", new List<string>() {"hello", "elloh"}}, {"aelps", new List<string>() {"pleas"}}};
+
+           Assert.Equal(group, expected);
+      }
+
+      [Fact]
+      public void ComputeAnagrams_2PosibleAnagramsWithApostrophe_ReturnAnagram()
+      {
+           var words = new List<string>(){"HEll'o", "el'loh", "pleas"};
+           Dictionary<string, List<string>> group = _anagram.ComputeAnagrams(words);
+           Dictionary<string, List<string>> expected = new Dictionary<string, List<string>>() 
+           {{"'ehllo", new List<string>() {"hell'o", "el'loh"}}, {"aelps", new List<string>() {"pleas"}}};
+
+           Assert.Equal(group, expected);
+      }
+      [Fact]
+      public void ComputeAnagrams_3WordsAndPosibleAnagramWithAccent_ReturnOneAnagram()
+      {
+           var words = new List<string>(){ "ónacci", "acción","camión"};
+           Dictionary<string, List<string>> group = _anagram.ComputeAnagrams(words);
+           Dictionary<string, List<string>> expected = new Dictionary<string, List<string>>() 
+           {{"accinó", new List<string>() {"ónacci","acción"}}, {"acimnó", new List<string>() {"camión"}}};
+
+           Assert.Equal(group, expected);
+      }
+
+      [Fact]
+      public void ComputeAnagrams_2WordsDiffersByAnAccent_ReturnTwoDifferentDictionaryList()
+      {
+           var words = new List<string>(){ "accion", "acción"};
+           Dictionary<string, List<string>> group = _anagram.ComputeAnagrams(words);
+           
+           var dictionaryLenght = group.Keys.Count;
+
+           Assert.Equal(2, dictionaryLenght);
+      }
   }
 }
