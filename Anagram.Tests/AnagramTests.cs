@@ -3,6 +3,7 @@ using Xunit;
 using Anagram;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace Anagram.Tests
 {
@@ -44,5 +45,42 @@ namespace Anagram.Tests
           }
         }
       };
+
+      [Fact]
+      public void ComputeAnagrams_GetList_ReturnDictionary()
+      {
+            var words = new List<string>();
+            Dictionary<string, List<string>> group = _anagram.ComputeAnagrams(words);
+      }
+
+      [Fact]
+      public void ComputeAnagrams_KeySavesWordSortedAlphabetically_ReturnDictionaryWithAlphabeticallySortedKey()
+      {
+            var words = new List<string>(){"hello"};
+            Dictionary<string, List<string>> group = _anagram.ComputeAnagrams(words);
+            Dictionary<string, List<string>> expected = new Dictionary<string, List<string>> {"ehllo", words};
+            
+            Assert.Equal(group, expected);
+            
+      }
+
+      //[Fact]
+      //public void ComputeAnagrams_TwoPossibleAnagramsInput_ReturnTwoAnagrams()
+      //{
+           // var words = new List<string>(){"hello", "ehllo", "bc", "cb"};
+           // Dictionary<string, List<string>> group = _anagram.ComputeAnagrams(words);
+           // Dictionary<string, List<string>> expected = new Dictionary<string, List<string>> 
+           // {"ehllo", new List<string>() {"hello", "ehllo"}, {"bc", new List<string>() {"bc", "cb"}}};
+            
+            //Assert.Equal(group, expected);
+            
+      //}
+       
+
+
+
+ 
+
+  
   }
 }

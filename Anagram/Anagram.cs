@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace Anagram
 {
@@ -26,5 +28,16 @@ namespace Anagram
       return groups; 
       
     }
+    
+    public Dictionary<string, List<string>> ComputeAnagrams(List<string> words)
+    {
+       var anagrams = new Dictionary<string, List<string>>();
+        
+      
+       return anagrams;
+    }
   }
+    
+   
 }
+
