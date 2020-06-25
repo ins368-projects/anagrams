@@ -11,12 +11,17 @@ namespace AnagramApp
         {
             List<string> words = ReadFile(filePath);
             Anagram.Anagram anagram = new Anagram.Anagram();
-            return anagram.ComputeAnagrams(words);
+            return FilterDict(anagram.ComputeAnagrams(words));
         }
 
         private List<string> ReadFile(string filePath)
         {
-            var unfilteredWordList = new List<string>(File.ReadAllLines(@filePath));
+            List<string> unfilteredWordList = null;
+            try{
+                unfilteredWordList = new List<string>(File.ReadAllLines(@filePath));
+            } catch (Exception e){
+                Console.WriteLine(e.StackTrace);
+            }
             return unfilteredWordList;
         }
 
