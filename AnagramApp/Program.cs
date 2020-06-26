@@ -10,7 +10,7 @@ namespace AnagramApp
     static void Main(string[] args)
     {
 			// Watch execution time.
-			var watch = System.Diagnostics.Stopwatch.StartNew();
+			// var watch = System.Diagnostics.Stopwatch.StartNew();
 
 			Write("Digite el path del archivo para buscar anagramas: ");
       
@@ -33,7 +33,7 @@ namespace AnagramApp
 			watch.Stop();
 
 			// Print execution time.
-			WriteLine($"\n---\nExecution time: {watch.ElapsedMilliseconds}\n---");
+			// WriteLine($"\n---\nExecution time: {watch.ElapsedMilliseconds}\n---");
     }
   }
 }
