@@ -1,6 +1,5 @@
 ﻿using System;
 using static System.Console;
-using System.Diagnostics;
 using Anagram;
 
 namespace AnagramApp
@@ -30,8 +29,7 @@ namespace AnagramApp
 				}
 			}
 
-			watch.Stop();
-
+			// watch.Stop();
 			// Print execution time.
 			// WriteLine($"\n---\nExecution time: {watch.ElapsedMilliseconds}\n---");
     }
