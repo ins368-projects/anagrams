@@ -12,7 +12,6 @@ namespace AnagramApp
 			// Watch execution time.
 			var watch = System.Diagnostics.Stopwatch.StartNew();
 
-      
 			Write("Digite el path del archivo para buscar anagramas: ");
       
 			string filePath = ReadLine();
@@ -21,10 +20,14 @@ namespace AnagramApp
 
       foreach (var anagrams in anagramsList)
       {
-				foreach (var word in anagrams.Value)
-          Write($"{word} ");
+				var hasAnagrams = anagrams.Value.Count > 1;
+				if(hasAnagrams)
+				{
+					foreach (var word in anagrams.Value)
+						Write($"{word} ");
 
-        WriteLine("");
+					WriteLine("");
+				}
 			}
 
 			watch.Stop();
