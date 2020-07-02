@@ -1,0 +1,1 @@
+Install-ChocolateyPackage 'AnagramApp' 'exe' '/quiet' 'https://github.com/ins368-projects/anagrams/releases/download/release/AnagramApp.exe'
