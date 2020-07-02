@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata>
+    <id>anagramsapp</id>
+    <title>AnagramApp</title>
+    <version>0.1.0.20120702</version>
+    <authors>Anagram Project</authors>
+    <owners>Myself</owners>
+    <summary>This is a test App for finding Anagrams</summary>
+    <description>This is a test app to upload to chocolatey, it's purpose is to find all anagrams in a given file</description>
+    <projectUrl>https://github.com/ins368-projects/anagrams</projectUrl>
+    <tags>some tags here</tags>
+    <licenseUrl></licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance> <!-- or true if you require the user to accept the License before installing -->
+    <iconUrl></iconUrl>
+  </metadata>
+</package>
