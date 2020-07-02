@@ -10,8 +10,8 @@
     <description>This is a test app to upload to chocolatey, it's purpose is to find all anagrams in a given file</description>
     <projectUrl>https://github.com/ins368-projects/anagrams</projectUrl>
     <tags>some tags here</tags>
-    <licenseUrl></licenseUrl>
+    <licenseUrl>https://github.com/ins368-projects/anagrams/blob/release/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance> <!-- or true if you require the user to accept the License before installing -->
-    <iconUrl></iconUrl>
+    <iconUrl>https://github.com/ins368-projects/anagrams/blob/master/anagram_icon.png</iconUrl>
   </metadata>
 </package>
